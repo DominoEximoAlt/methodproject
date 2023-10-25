@@ -4,6 +4,8 @@ import hu.unideb.method.methodproject.dto.UserDto;
 import hu.unideb.method.methodproject.entities.User;
 import hu.unideb.method.methodproject.services.UserService;
 import jakarta.annotation.PostConstruct;
+import jakarta.faces.application.FacesMessage;
+import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -26,6 +28,20 @@ public class UserView {
             this.getUsers().clear();
         }
         this.getUsers().addAll(userService.getAll());
+    }
+
+    public void loginUser(UserDto userDto){
+        if(!(userService.findUserByUserName(userDto.getUsername()) == null)){
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Logged in successfully!");
+            PrimeFaces.current().dialog().showMessageDynamic(message);
+        }else {
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
+            PrimeFaces.current().dialog().showMessageDynamic(message);
+        }
+    }
+
+    public void registerUser(UserDto userDto){
+
     }
 
     public List<UserDto> getUsers() {
