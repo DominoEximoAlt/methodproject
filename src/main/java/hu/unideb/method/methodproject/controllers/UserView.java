@@ -28,6 +28,14 @@ public class UserView {
         this.getUsers().addAll(userService.getAll());
     }
 
+    public void loginUser(UserDto userDto){
+        //TODO
+    }
+
+    public void registerUser(UserDto userDto){
+
+    }
+
     public List<UserDto> getUsers() {
         if(null == users){
             users = new ArrayList<>();
