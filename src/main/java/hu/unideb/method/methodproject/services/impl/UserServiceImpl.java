@@ -1,7 +1,6 @@
 package hu.unideb.method.methodproject.services.impl;
 
 import hu.unideb.method.methodproject.dto.UserDto;
-import hu.unideb.method.methodproject.entities.User;
 import hu.unideb.method.methodproject.mapper.UserMapper;
 import hu.unideb.method.methodproject.repositories.UserRepository;
 import hu.unideb.method.methodproject.services.UserService;
@@ -26,4 +25,14 @@ public class UserServiceImpl implements UserService {
         return dtos;
     }
 
+    /**
+     * Finds user by username
+     * @param username name of the user
+     * @return UserDto
+     */
+    @Override
+    public UserDto findUserByUserName(String username) {
+        UserDto user = userMapper.userToUserDto(userRepository.findUserByUsername(username));
+        return user;
+    }
 }
