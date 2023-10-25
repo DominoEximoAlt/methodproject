@@ -1,11 +1,12 @@
 package hu.unideb.method.methodproject.dto;
 
-public class UserDto {
+import lombok.Data;
 
+@Data
+public class UserDto {
     String username;
 
     String password;
-
     public String getUsername() {
         return username;
     }
@@ -21,4 +22,5 @@ public class UserDto {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
