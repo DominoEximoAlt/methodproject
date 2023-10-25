@@ -41,7 +41,7 @@ public class UserView {
     }
 
     public void registerUser(UserDto userDto){
-
+        //TODO
     }
 
     public List<UserDto> getUsers() {
