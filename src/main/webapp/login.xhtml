@@ -12,10 +12,13 @@
     <h:form>
         <h3>Login</h3>
         <h5>Username</h5>
-        <span class="ui-float-label">
-            <p:inputText id="float-input" value="#{inputTextView.text}"/>
-            <p:outputLabel for="@previous" value="Username"/>
+        <span class="card">
+            <p:inputText id="username" value="#{userView.currentUser.username}"/>
         </span>
+        <h5>Password</h5>
+        <p:password id="password" value="#{userView.currentUser.password}" toggleMask="true" redisplay="true" feedback="true"/>
+        <br></br>
+        <h:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login"></h:commandButton>
     </h:form>
 </h:body>
 </html>
