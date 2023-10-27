@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -6,19 +8,39 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Login</title>
-    <h:outputStylesheet name="/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
 </h:head>
-<h:body>
-    <h:form>
-        <h3>Login</h3>
-        <h5>Username</h5>
-        <span class="card">
-            <p:inputText id="username" value="#{userView.currentUser.username}"/>
-        </span>
-        <h5>Password</h5>
-        <p:password id="password" value="#{userView.currentUser.password}" toggleMask="true" redisplay="true" feedback="true"/>
-        <br></br>
-        <h:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login"></h:commandButton>
-    </h:form>
+<h:body class="align">
+    <div class="grid">
+
+        <h:form>
+            <div>
+                <H2 class="login">Log in</H2>
+            </div>
+            <div class="form__field">
+                <span class="ui-float-label">
+                    <p:inputText id="float-input" value="#{userView.currentUser.username}"/>
+                    <p:outputLabel for="@previous" value="Username"/>
+                </span>
+            </div>
+            <div class="form__field" style="width: 40px">
+                <span class="ui-float-label">
+                    <p:password id="password" value="#{userView.currentUser.password}" redisplay="true" feedback="true"/>
+                    <p:outputLabel for="@previous" value="Password"/>
+                </span>
+
+            </div>
+            <div class="loginButton">
+                <div class="form__field">
+                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login"></p:commandButton>
+                </div>
+            </div>
+
+
+        </h:form>
+
+        <p class="text--center">Not a member? <a href="#">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
+
+    </div>
 </h:body>
 </html>
