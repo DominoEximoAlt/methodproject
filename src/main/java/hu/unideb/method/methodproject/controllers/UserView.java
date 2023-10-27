@@ -31,9 +31,15 @@ public class UserView {
     }
 
     public void loginUser(UserDto userDto){
-        if(!(userService.findUserByUserName(userDto.getUsername()) == null)){
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Logged in successfully!");
-            PrimeFaces.current().dialog().showMessageDynamic(message);
+        UserDto toBeLoggedIn = userService.findUserByUserName(userDto.getUsername());
+        if(toBeLoggedIn != null){
+            if (toBeLoggedIn.getUsername().equals(currentUser.getUsername()) && toBeLoggedIn.getPassword().equals(currentUser.getPassword())){
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Logged in successfully!");
+                PrimeFaces.current().dialog().showMessageDynamic(message);
+            }else {
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
+                PrimeFaces.current().dialog().showMessageDynamic(message);
+            }
         }else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
             PrimeFaces.current().dialog().showMessageDynamic(message);
@@ -41,7 +47,14 @@ public class UserView {
     }
 
     public void registerUser(UserDto userDto){
-
+        if(userService.findUserByUserName(userDto.getUsername()) != null){
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "FAILURE", "User with name already exists!");
+            PrimeFaces.current().dialog().showMessageDynamic(message);
+        }else{
+            userService.save(userDto);
+            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Succesfully registered!");
+            PrimeFaces.current().dialog().showMessageDynamic(message);
+        }
     }
 
     public List<UserDto> getUsers() {

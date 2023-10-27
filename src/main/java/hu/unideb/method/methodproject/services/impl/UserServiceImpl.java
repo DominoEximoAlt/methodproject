@@ -37,4 +37,25 @@ public class UserServiceImpl implements UserService {
         UserDto user = userMapper.userToUserDto(userRepository.findUserByUsername(username));
         return user;
     }
+
+    /**
+     * Saves user data
+     * @param userDto user data
+     */
+    @Override
+    public void save(UserDto userDto) {
+        userRepository.save(userMapper.userDtoToUser(userDto));
+    }
+
+    /**
+     * Deletes user data
+     * @param userDto user data
+     */
+    @Override
+    public void delete(UserDto userDto) {
+
+        userRepository.deleteById(userDto.getUsername());
+    }
+
+
 }
