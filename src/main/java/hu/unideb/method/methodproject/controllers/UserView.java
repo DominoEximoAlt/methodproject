@@ -30,6 +30,11 @@ public class UserView {
         this.getUsers().addAll(userService.getAll());
     }
 
+    /**
+     * Checks wether the given user is stored in the database or not
+     * Also sets up the currently logged in profile
+     * @param userDto the user to check and log in
+     */
     public void loginUser(UserDto userDto){
         UserDto toBeLoggedIn = userService.findUserByUserName(userDto.getUsername());
         if(toBeLoggedIn != null){
@@ -46,6 +51,10 @@ public class UserView {
         }
     }
 
+    /**
+     * Registers the user into the database if not already stored
+     * @param userDto the user to be registered
+     */
     public void registerUser(UserDto userDto){
         if(userService.findUserByUserName(userDto.getUsername()) != null){
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "FAILURE", "User with name already exists!");
