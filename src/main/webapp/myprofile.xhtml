@@ -17,25 +17,28 @@
             <div>
                 <H2 class="my profile">My profile</H2>
             </div>
-            <div class="form__field">
-                <span class="ui-float-label">
-                    <p:inputText id="firstname" value="firstname"/>
-                    <p:outputLabel for="@previous" value="Firstname:"/>
-                </span>
-                <span class="ui-float-label">
-                    <p:inputText id="lastname" value="lastname"/>
-                    <p:outputLabel for="@previous" value="Lastname:"/>
-                </span>
-                <div class="data">
-                    <p:inputNumber id="height" symbol="Kg"
-                                   symbolPosition="s" emptyValue="zero" />
-                    <p:outputLabel for="@previous" value="Height:"/>
-                </div>
-                <div class="data">
-                    <p:inputNumber id="weight" symbol="cm"
-                                   symbolPosition="s" emptyValue="zero" />
-                    <p:outputLabel for="@previous" value="Weight:"/>
-                </div>
+            <div class="card">
+                <h:panelGrid columns="2">
+                    <h4>Firstname: </h4>
+                    <span class="ui-float-label">
+                        <p:inputText id="firstname" />
+                    </span>
+                    <h4>Lastname: </h4>
+                    <span class="ui-float-label">
+                        <p:inputText id="lastname" value=""/>
+                    </span>
+                    <h4>Height: </h4>
+                    <div class="data">
+                        <p:inputNumber id="height" symbol=" Kg"
+                                       symbolPosition="s" emptyValue="always" />
+                    </div>
+                    <h4>Weight: </h4>
+                    <div class="data">
+                        <p:inputNumber id="weight" symbol=" cm"
+                                       symbolPosition="s" emptyValue="always" />
+                    </div>
+                </h:panelGrid>
+
             </div>
             <div class="save-button">
                 <p:commandButton value="Save"></p:commandButton>
