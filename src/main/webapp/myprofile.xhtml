@@ -29,13 +29,13 @@
                     </span>
                     <h4>Height: </h4>
                     <div class="data">
-                        <p:inputNumber id="height" symbol=" Kg"
-                                       symbolPosition="s" emptyValue="always" />
+                        <p:inputNumber id="height" symbol=" cm" minValue="50" maxValue="250"
+                                       decimalPlaces="3" symbolPosition="s" emptyValue="always" />
                     </div>
                     <h4>Weight: </h4>
                     <div class="data">
-                        <p:inputNumber id="weight" symbol=" cm"
-                                       symbolPosition="s" emptyValue="always" />
+                        <p:inputNumber id="weight" symbol=" Kg" minValue="10" max="300"
+                                       decimalPlaces="3" symbolPosition="s" emptyValue="always" />
                     </div>
                 </h:panelGrid>
 
