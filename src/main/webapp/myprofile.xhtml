@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>My profile</title>
+    <link rel="stylesheet" type="text/css" href="css/myprofile.css"/>
+</h:head>
+<h:body class="align">
+    <div class="grid">
+
+        <h:form>
+            <div>
+                <H2 class="my profile">My profile</H2>
+            </div>
+            <div class="form__field">
+                <span class="ui-float-label">
+                    <p:inputText id="firstname" value="firstname"/>
+                    <p:outputLabel for="@previous" value="Firstname:"/>
+                </span>
+                <span class="ui-float-label">
+                    <p:inputText id="lastname" value="lastname"/>
+                    <p:outputLabel for="@previous" value="Lastname:"/>
+                </span>
+                <div class="data">
+                    <p:inputNumber id="height" symbol="Kg"
+                                   symbolPosition="s" emptyValue="zero" />
+                    <p:outputLabel for="@previous" value="Height:"/>
+                </div>
+                <div class="data">
+                    <p:inputNumber id="weight" symbol="cm"
+                                   symbolPosition="s" emptyValue="zero" />
+                    <p:outputLabel for="@previous" value="Weight:"/>
+                </div>
+            </div>
+            <div class="save-button">
+                <p:commandButton value="Save"></p:commandButton>
+            </div>
+        </h:form>
+    </div>
+
+</h:body>
+</html>
