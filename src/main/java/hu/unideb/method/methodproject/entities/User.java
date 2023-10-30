@@ -9,9 +9,10 @@ import lombok.Data;
 @Data
 public class User {
     @Id
-    String username;
+    private String username;
+
     @Column(name = "PASSWORD")
-    String password;
+    private String password;
 
     public String getUsername() {
         return username;
