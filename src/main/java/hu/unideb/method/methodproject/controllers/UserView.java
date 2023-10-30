@@ -8,11 +8,13 @@ import jakarta.faces.application.FacesMessage;
 import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@SessionScope
 public class UserView {
 
     @Autowired

@@ -8,6 +8,5 @@ public interface UserService {
     List<UserDto> getAll();
     UserDto findUserByUserName(String username);
     void save(UserDto userDto);
-
     void delete(UserDto userDto);
 }

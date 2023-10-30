@@ -32,7 +32,9 @@
             </div>
             <div class="loginButton">
                 <div class="form__field">
-                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login"></p:commandButton>
+                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login" >
+                        <f:actionListener binding="#{profileView.loadProfile(userView.currentUser)}"></f:actionListener>
+                    </p:commandButton>
                 </div>
             </div>
 

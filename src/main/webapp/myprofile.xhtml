@@ -21,27 +21,27 @@
                 <h:panelGrid columns="2">
                     <h4>Firstname: </h4>
                     <span class="ui-float-label">
-                        <p:inputText id="firstname" />
+                        <p:inputText id="firstname" value="#{profileView.currentProfile.firstName}"/>
                     </span>
                     <h4>Lastname: </h4>
                     <span class="ui-float-label">
-                        <p:inputText id="lastname" value=""/>
+                        <p:inputText id="lastname" value="#{profileView.currentProfile.lastName}"/>
                     </span>
                     <h4>Height: </h4>
                     <div class="data">
                         <p:inputNumber id="height" symbol=" cm" minValue="50" maxValue="250"
-                                       decimalPlaces="3" symbolPosition="s" emptyValue="always" />
+                                       decimalPlaces="3" symbolPosition="s" emptyValue="always" value="#{profileView.currentProfile.height}"/>
                     </div>
                     <h4>Weight: </h4>
                     <div class="data">
                         <p:inputNumber id="weight" symbol=" Kg" minValue="10" max="300"
-                                       decimalPlaces="3" symbolPosition="s" emptyValue="always" />
+                                       decimalPlaces="3" symbolPosition="s" emptyValue="always" value="#{profileView.currentProfile.weight}" />
                     </div>
                 </h:panelGrid>
 
             </div>
             <div class="save-button">
-                <p:commandButton value="Save"></p:commandButton>
+                <p:commandButton value="Save" action="#{profileView.saveProfile(userView.currentUser)}"/>
             </div>
         </h:form>
     </div>
