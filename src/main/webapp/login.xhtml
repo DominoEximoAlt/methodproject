@@ -31,7 +31,7 @@
             </div>
             <div class="loginButton">
                 <div class="form__field">
-                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login" oncomplete="#{navigationController.moveToProfilePage(userView.loggedIn)}">
+                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login" onsuccess="#{navigationController.moveToProfilePage()}">
                         <f:actionListener binding="#{profileView.loadProfile(userView.currentUser)}"></f:actionListener>
                     </p:commandButton>
                 </div>

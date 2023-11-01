@@ -5,6 +5,7 @@ import hu.unideb.method.methodproject.entities.User;
 import hu.unideb.method.methodproject.services.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
+import jakarta.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class UserView {
 
     private UserDto currentUser;
 
-    private boolean loggedIn = false;
+    private boolean loggedIn;
 
     @PostConstruct
     public void getAllUsers(){
@@ -43,18 +44,8 @@ public class UserView {
         UserDto toBeLoggedIn = userService.findUserByUserName(userDto.getUsername());
         if(toBeLoggedIn != null){
             if (toBeLoggedIn.getUsername().equals(currentUser.getUsername()) && toBeLoggedIn.getPassword().equals(currentUser.getPassword())){
-                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Logged in successfully!");
-                PrimeFaces.current().dialog().showMessageDynamic(message);
-                loggedIn = true;
-            }else {
-                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
-                PrimeFaces.current().dialog().showMessageDynamic(message);
-                loggedIn = false;
+                setLoggedIn(true);
             }
-        }else {
-            FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
-            PrimeFaces.current().dialog().showMessageDynamic(message);
-            loggedIn = false;
         }
     }
 
