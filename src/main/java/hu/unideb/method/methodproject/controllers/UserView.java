@@ -24,6 +24,8 @@ public class UserView {
 
     private UserDto currentUser;
 
+    private boolean loggedIn = false;
+
     @PostConstruct
     public void getAllUsers(){
         if(this.getUsers().isEmpty()){
@@ -43,13 +45,16 @@ public class UserView {
             if (toBeLoggedIn.getUsername().equals(currentUser.getUsername()) && toBeLoggedIn.getPassword().equals(currentUser.getPassword())){
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Logged in successfully!");
                 PrimeFaces.current().dialog().showMessageDynamic(message);
+                loggedIn = true;
             }else {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
                 PrimeFaces.current().dialog().showMessageDynamic(message);
+                loggedIn = false;
             }
         }else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
             PrimeFaces.current().dialog().showMessageDynamic(message);
+            loggedIn = false;
         }
     }
 
@@ -84,6 +89,14 @@ public class UserView {
             currentUser = new UserDto();
         }
         return currentUser;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
     }
 
     public void setCurrentUser(UserDto currentUser) {
