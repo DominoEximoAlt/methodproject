@@ -25,6 +25,7 @@ public class Profile {
     private Double weight;
 
     @OneToOne
+    @JoinColumn(name = "username")
     private User user;
 
 

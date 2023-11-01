@@ -49,10 +49,12 @@ public class UserView {
             }else {
                 FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
                 PrimeFaces.current().dialog().showMessageDynamic(message);
+                loggedIn = false;
             }
         }else {
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "LOGIN ERROR", "Could not find user with given username and password!");
             PrimeFaces.current().dialog().showMessageDynamic(message);
+            loggedIn = false;
         }
     }
 
