@@ -18,7 +18,7 @@ html, body {
     text-align: center;
 }
 .panel1{
-    height: 25%;
+    height: 20%;
     border: black solid;
 }
 .panel2{
@@ -50,19 +50,10 @@ html, body {
     background-color: #4F4557;
     color: #F4EEE0;
 }
-table{
-    padding-top: 4%;
-    width: 80%;
+.table1{
+    width: 100%;
     text-align: center;
 }
 td, th{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10%;
-    font-size: x-large;
-    text-align: left;
-}
-.submit{
-    text-align: left;
-    padding-left: 10%;
+    border: solid black;
 }

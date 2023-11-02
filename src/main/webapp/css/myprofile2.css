@@ -6,7 +6,6 @@ html, body {
     background-color: #4F4557;
     color: #6D5D6E;
 }
-
 .grid {
     height: 1000px;
     width: 800px;
@@ -17,19 +16,28 @@ html, body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
-.panel1{
-    height: 25%;
-    border: black solid;
+
+.card{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 8%;
+    padding-left: 25%;
+
 }
-.panel2{
-    height: 20%;
-    border: black solid;
+h4{
+    padding-left: 10%;
+    padding-right: 20px;
+    font-size: x-large;
+}
+h2{
+    font-size: xxx-large;
+    padding-top: 3%;
 }
 
-.panel3{
-    height: 50%;
-    border: black solid;
+.save-button{
+    padding-bottom: 20px;
 }
+
 .navbar{
     background-color: #2c3338;
     overflow: hidden;
@@ -49,20 +57,4 @@ html, body {
 .navbar a.active {
     background-color: #4F4557;
     color: #F4EEE0;
-}
-table{
-    padding-top: 4%;
-    width: 80%;
-    text-align: center;
-}
-td, th{
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10%;
-    font-size: x-large;
-    text-align: left;
-}
-.submit{
-    text-align: left;
-    padding-left: 10%;
 }

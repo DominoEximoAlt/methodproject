@@ -12,24 +12,37 @@
 </h:head>
 <h:body class="align">
     <div class="grid">
-        <div class="card">
-            <p:tabMenu activeIndex="#{param.i}">
-                <p:menuitem value="Exercise" url="/fitness/exercise.jsf">
-                    <f:param name="i" value="0"/>
-                </p:menuitem>
-                <p:menuitem value="Diet" url="/fitness/login.jsf">
-                    <f:param name="i" value="1"/>
-                </p:menuitem>
-                <p:menuitem value="My profile" url="/fitness/myprofile.jsf">
-                    <f:param name="i" value="2"/>
-                </p:menuitem>
-            </p:tabMenu>
+        <div class="navbar">
+            <a href="myprofile.jsf">My profile</a>
+            <a class="active" href="exercise.jsf">Exercise</a>
+            <a href="exercise.jsf">Diet</a>
         </div>
         <div class="panel1">
+            <table class="table1">
+                <tr>
+                    <th>What did I do today?</th>
+                    <th>
+                        <p:selectOneMenu id="country" value=" " style="width:150px">
+                            <f:selectItem itemLabel="Select Exercise" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value=" "/>
+                        </p:selectOneMenu>
 
+                    </th>
+                </tr>
+                <tr>
+                    <td>How long?</td>
+                    <td>
+                        <p:inputNumber id="input" value=" " decimalPlaces="0" />
+                    </td>
+                </tr>
+            </table>
+            <div class="submit"><p:button value="Submit" styleClass="ui-button-outlined" /></div>
         </div>
         <div class="panel2">
-
+            <div>
+                <h3>Calories burned:</h3>
+                <p:outputLabel id="Calories" value="0" style="border-radius: 3px ;padding-right: 5px; padding-left: 5px; border: solid 1px #F4EEE0"/>
+            </div>
         </div>
         <div class="panel3">
 
