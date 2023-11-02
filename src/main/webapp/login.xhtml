@@ -12,7 +12,6 @@
 </h:head>
 <h:body class="align">
     <div class="grid">
-
         <h:form>
             <div>
                 <H2 class="login">Log in</H2>
@@ -32,7 +31,7 @@
             </div>
             <div class="loginButton">
                 <div class="form__field">
-                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login" oncomplete="#{navigationController.moveToProfilePage(userView.loggedIn)}">
+                    <p:commandButton action="#{userView.loginUser(userView.currentUser)}" value="Login" onsuccess="#{navigationController.moveToProfilePage()}">
                         <f:actionListener binding="#{profileView.loadProfile(userView.currentUser)}"></f:actionListener>
                     </p:commandButton>
                 </div>
