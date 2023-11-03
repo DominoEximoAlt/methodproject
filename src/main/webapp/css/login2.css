@@ -1,10 +1,9 @@
-
 html, body {
     margin: 0;
     padding: 10%;
     font-family: Arial, sans-serif;
-    background-color: #2c3338;
-    color: #606468;
+    background-color: #4F4557;
+    color: #6D5D6E;
 }
 
 .grid {
@@ -12,18 +11,17 @@ html, body {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    background-color: #363b41;
+    background-color: #393646;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.sign{
+.login{
     text-align: center;
     padding-bottom: 8%;
     font-size: xx-large;
 }
-
-.signButton{
+.loginButton{
     padding-left: 23%;
 }
 
@@ -33,3 +31,16 @@ html, body {
     padding-left: 20%;
 }
 
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+
+.icon {
+    height: 16px;
+}
+
+.text--center {
+    text-align: center;
+}
