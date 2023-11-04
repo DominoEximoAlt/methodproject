@@ -18,7 +18,7 @@ html, body {
     text-align: center;
 }
 .panel1{
-    height: 20%;
+    height: 25%;
     border: black solid;
 }
 .panel2{
@@ -50,10 +50,30 @@ html, body {
     background-color: #4F4557;
     color: #F4EEE0;
 }
-.table1{
-    width: 100%;
+table{
+    padding-top: 4%;
+    width: 80%;
     text-align: center;
 }
 td, th{
-    border: solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10%;
+    font-size: x-large;
+    text-align: left;
+}
+.table2{
+    width: 50%;
+}
+.table2 th{
+}
+.submit{
+    text-align: left;
+    padding-left: 10%;
+}
+.linechart{
+    border: grey solid;
+    max-width: 90%;
+    margin: 5%;
+    height: 40%;
 }

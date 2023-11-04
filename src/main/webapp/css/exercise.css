@@ -62,12 +62,15 @@ td, th{
     font-size: x-large;
     text-align: left;
 }
+.table2{
+    border: solid grey;
+}
 .submit{
     text-align: left;
     padding-left: 10%;
 }
 .linechart{
-    border: grey solid;
+    border: black solid;
     max-width: 90%;
     margin: 5%;
     height: 40%;
