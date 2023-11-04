@@ -7,4 +7,13 @@
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
+    <navigation-rule>
+        <from-view-id>login.jsf</from-view-id>
+        <navigation-case>
+            <from-action>#{navigationController.moveToLoginPage()}</from-action>
+            <from-outcome>success</from-outcome>
+            <to-view-id>myprofile.jsf</to-view-id>
+        </navigation-case>
+
+    </navigation-rule>
 </faces-config >

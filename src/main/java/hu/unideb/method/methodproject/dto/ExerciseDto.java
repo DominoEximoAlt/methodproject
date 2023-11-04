@@ -1,5 +1,6 @@
 package hu.unideb.method.methodproject.dto;
 
+import hu.unideb.method.methodproject.entities.User;
 import hu.unideb.method.methodproject.enums.ExerciseEnum;
 import lombok.Data;
 
@@ -9,7 +10,17 @@ public class ExerciseDto {
     private long id;
     private ExerciseEnum exercise;
 
-    private int time;
+    private Double time;
+
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;
@@ -27,11 +38,11 @@ public class ExerciseDto {
         this.exercise = exercise;
     }
 
-    public int getTime() {
+    public Double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Double time) {
         this.time = time;
     }
 }

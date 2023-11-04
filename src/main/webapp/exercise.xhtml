@@ -15,38 +15,41 @@
         <div class="navbar">
             <a href="myprofile.jsf">My profile</a>
             <a class="active" href="exercise.jsf">Exercise</a>
-            <a href="diet.jsf">Diet</a>
-            <p:commandButton value="Log out" styleClass="ui-button-flat" onsuccess="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%"/>
+            <a href="exercise.jsf">Diet</a>
+            <p:commandButton value="Log out" action="#{userView.logout()}" styleClass="ui-button-flat" onsuccess="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%"/>
         </div>
-        <div class="panel1">
-            <table class="table1">
-                <tr>
-                    <th>What did I do today?</th>
-                    <th>
-                        <p:selectOneMenu id="country" value=" " style="width:150px">
-                            <f:selectItem itemLabel="Select Exercise" itemValue="" noSelectionOption="true"/>
-                            <f:selectItems value=" "/>
-                        </p:selectOneMenu>
+        <h:form>
+            <div class="panel1">
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>How long?</td>
-                    <td>
-                        <p:inputNumber id="input" value=" " decimalPlaces="0" symbol=" min" symbolPosition="s"/>
-                    </td>
-                </tr>
-            </table>
-            <div class="submit"><p:button value="Submit" styleClass="ui-button-outlined" /></div>
-        </div>
+                    <table class="table1">
+                        <tr>
+                            <th>What did I do today?</th>
+                            <th>
+                                <p:selectOneMenu id="excerciseType" value="#{excerciseView.exercise}" style="width:150px">
+                                    <f:selectItem itemLabel="Select Exercise" itemValue="" noSelectionOption="true"/>
+                                    <f:selectItems value="#{excerciseView.exercises}"/>
+                                </p:selectOneMenu>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>How long?</td>
+                            <td>
+                                <p:inputNumber id="height" symbol=" m" minValue="50" maxValue="250"
+                                               decimalPlaces="3" symbolPosition="s" emptyValue="always" value="#{excerciseView.currentExercise.time}"/>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="submit"><p:commandButton action="#{excerciseView.addExercise(userView.currentUser)}" value="Submit" /></div>
+            </div>
+        </h:form>
         <div class="panel2">
             <table class="table2">
                 <tr>
                     <th>Calories burned: </th>
                     <th><p:outputLabel id="Calories" value="0" style="padding: 5px; padding-right: 25px; padding-left: 25px; border: solid 1px #F4EEE0"/></th>
                 </tr>
-
             </table>
+
         </div>
         <div class="panel3">
             <h2>Statistics</h2>
