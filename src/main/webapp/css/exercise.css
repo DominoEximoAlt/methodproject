@@ -19,16 +19,16 @@ html, body {
 }
 .panel1{
     height: 25%;
-    border: black solid;
+    border-bottom: #6D5D6E solid;
 }
 .panel2{
     height: 20%;
-    border: black solid;
+    border-bottom: #6D5D6E solid;
 }
 
 .panel3{
     height: 50%;
-    border: black solid;
+    border-bottom: #393646 solid;
 }
 .navbar{
     background-color: #2c3338;
@@ -62,6 +62,11 @@ td, th{
     font-size: x-large;
     text-align: left;
 }
+.table2{
+    width: 50%;
+}
+.table2 th{
+}
 .submit{
     text-align: left;
     padding-left: 10%;
@@ -70,5 +75,5 @@ td, th{
     border: grey solid;
     max-width: 90%;
     margin: 5%;
-    height: 40%;
+    height: 50%;
 }
