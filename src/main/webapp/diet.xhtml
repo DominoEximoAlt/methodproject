@@ -7,33 +7,33 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Exercise</title>
+    <title>Diet</title>
     <link rel="stylesheet" type="text/css" href="css/exercise.css"/>
 </h:head>
 <h:body class="align">
     <div class="grid">
         <div class="navbar">
             <a href="myprofile.jsf">My profile</a>
-            <a class="active" href="exercise.jsf">Exercise</a>
-            <a href="diet.jsf">Diet</a>
+            <a href="exercise.jsf">Exercise</a>
+            <a class="active" href="diet.jsf">Diet</a>
             <p:commandButton value="Log out" styleClass="ui-button-flat" onsuccess="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%"/>
         </div>
         <div class="panel1">
             <table class="table1">
                 <tr>
-                    <th>What did I do today?</th>
+                    <th>What did I eat today?</th>
                     <th>
                         <p:selectOneMenu id="country" value=" " style="width:150px">
-                            <f:selectItem itemLabel="Select Exercise" itemValue="" noSelectionOption="true"/>
+                            <f:selectItem itemLabel="Select food" itemValue="" noSelectionOption="true"/>
                             <f:selectItems value=" "/>
                         </p:selectOneMenu>
 
                     </th>
                 </tr>
                 <tr>
-                    <td>How long?</td>
+                    <td>How much?</td>
                     <td>
-                        <p:inputNumber id="input" value=" " decimalPlaces="0" symbol=" min" symbolPosition="s"/>
+                        <p:inputNumber id="input" value=" " decimalPlaces="0" symbol=" g" symbolPosition="s"/>
                     </td>
                 </tr>
             </table>
@@ -42,7 +42,7 @@
         <div class="panel2">
             <table class="table2">
                 <tr>
-                    <th>Calories burned: </th>
+                    <th>Calories consumned: </th>
                     <th><p:outputLabel id="Calories" value="0" style="padding: 5px; padding-right: 25px; padding-left: 25px; border: solid 1px #F4EEE0"/></th>
                 </tr>
 
