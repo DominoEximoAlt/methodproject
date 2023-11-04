@@ -10,7 +10,6 @@ public class NavigationController {
     /**
      * Returns a string of the page to be redirected depending on being logged in
      *
-     * @param loggedIn boolean login status
      * @return string link and window location
      */
     public String moveToProfilePage() {
