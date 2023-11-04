@@ -1,10 +1,14 @@
 package hu.unideb.method.methodproject.controllers;
 
+
 import org.springframework.stereotype.Controller;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.context.annotation.ApplicationScope;
+
+import javax.faces.bean.ViewScoped;
+
 
 @Controller
-@SessionScope
+@ViewScoped
 public class NavigationController {
 
     /**
@@ -12,8 +16,11 @@ public class NavigationController {
      *
      * @return string link and window location
      */
-    public String moveToProfilePage() {
-        return "window.location.href = '/fitness/myprofile.jsf'";
+    public String moveToProfilePage(boolean loginStatus) {
+        if(Boolean.TRUE.equals(loginStatus)){
+            return "window.location.href = '/fitness/myprofile.jsf'";
+        }
+        return null;
 
     }
     public String moveToLoginPage() {

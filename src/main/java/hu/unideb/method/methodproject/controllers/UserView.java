@@ -1,25 +1,27 @@
 package hu.unideb.method.methodproject.controllers;
 
 import hu.unideb.method.methodproject.dto.UserDto;
-import hu.unideb.method.methodproject.entities.User;
 import hu.unideb.method.methodproject.services.UserService;
 import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
-import jakarta.faces.context.FacesContext;
 import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.context.annotation.SessionScope;
+import org.springframework.web.context.annotation.ApplicationScope;
 
+import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@SessionScope
+@ViewScoped
 public class UserView {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    NavigationController navigationController;
 
     private List<UserDto> users;
 
@@ -43,10 +45,18 @@ public class UserView {
     public void loginUser(UserDto userDto){
         UserDto toBeLoggedIn = userService.findUserByUserName(userDto.getUsername());
         if(toBeLoggedIn != null){
-            if (toBeLoggedIn.getUsername().equals(currentUser.getUsername()) && toBeLoggedIn.getPassword().equals(currentUser.getPassword())){
+            if (toBeLoggedIn.getUsername().equals(userDto.getUsername()) && toBeLoggedIn.getPassword().equals(userDto.getPassword())){
                 setLoggedIn(true);
+            }else {
+                FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "FAILURE", "Username or password incorrect!");
+                PrimeFaces.current().dialog().showMessageDynamic(message);
+                setLoggedIn(false);
             }
         }
+    }
+
+    public void logout(){
+        setCurrentUser(null);
     }
 
     /**

@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.context.annotation.SessionScope;
 
+import javax.faces.bean.ViewScoped;
+
 @Controller
-@SessionScope
+@ViewScoped
 public class ProfileView {
 
     @Autowired
@@ -44,4 +46,7 @@ public class ProfileView {
     public void setCurrentProfile(ProfileDto currentProfile) {
         this.currentProfile = currentProfile;
     }
+
+
+
 }

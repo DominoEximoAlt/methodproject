@@ -12,12 +12,12 @@ public class Exercise {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @Column(name = "EXERCISE")
     private ExerciseEnum exercise;
 
     @Column(name = "TIME")
-    private int time;
+    private Double time;
 
     @ManyToOne
     @JoinColumn(name = "username")
@@ -39,11 +39,11 @@ public class Exercise {
         this.exercise = exercise;
     }
 
-    public int getTime() {
+    public Double getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(Double time) {
         this.time = time;
     }
 
