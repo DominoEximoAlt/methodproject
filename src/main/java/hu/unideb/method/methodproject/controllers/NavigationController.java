@@ -17,5 +17,9 @@ public class NavigationController {
         return "window.location.href = '/fitness/myprofile.jsf'";
 
     }
+    public String moveToLoginPage() {
+        return "window.location.href = '/fitness/login.jsf'";
+
+    }
 
 }

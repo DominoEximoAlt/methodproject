@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Exercise</title>
-    <link rel="stylesheet" type="text/css" href="css/exercise2.css"/>
+    <link rel="stylesheet" type="text/css" href="css/exercise.css"/>
 </h:head>
 <h:body class="align">
     <div class="grid">
@@ -16,6 +16,7 @@
             <a href="myprofile.jsf">My profile</a>
             <a class="active" href="exercise.jsf">Exercise</a>
             <a href="exercise.jsf">Diet</a>
+            <p:commandButton type="button" value="Log out" styleClass="ui-button-flat" onsuccess="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%"/>
         </div>
         <div class="panel1">
             <table class="table1">
