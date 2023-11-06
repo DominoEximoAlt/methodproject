@@ -70,6 +70,7 @@ td, th{
 .submit{
     text-align: left;
     padding-left: 10%;
+    margin-bottom: 2%;
 }
 .linechart{
     border: grey solid;
