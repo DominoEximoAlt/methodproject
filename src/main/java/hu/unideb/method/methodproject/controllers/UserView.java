@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@ViewScoped
+@ApplicationScope
 public class UserView {
 
     @Autowired

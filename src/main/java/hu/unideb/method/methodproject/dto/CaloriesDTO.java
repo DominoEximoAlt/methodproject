@@ -5,6 +5,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
+import java.sql.Date;
+
 @Data
 public class CaloriesDTO {
 
@@ -17,6 +19,10 @@ public class CaloriesDTO {
     private int caloriesFromExercise;
 
     private User user;
+
+
+
+    private Date logDate;
 
     public Long getId() {
         return id;
@@ -56,5 +62,13 @@ public class CaloriesDTO {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getLogDate() {
+        return logDate;
+    }
+
+    public void setLogDate(Date logDate) {
+        this.logDate = logDate;
     }
 }

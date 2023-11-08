@@ -3,6 +3,8 @@ package hu.unideb.method.methodproject.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.sql.Date;
+
 @Entity
 @Data
 public class Calories {
@@ -17,6 +19,9 @@ public class Calories {
     private int caloriesFromDiet;
     @Column(name = "FROMEXERCISE")
     private int caloriesFromExercise;
+
+    @Column(name = "LOGDATE")
+    private Date logDate;
 
     @ManyToOne
     @JoinColumn(name = "username")
@@ -59,5 +64,13 @@ public class Calories {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getLogDate() {
+        return logDate;
+    }
+
+    public void setLogDate(Date logDate) {
+        this.logDate = logDate;
     }
 }

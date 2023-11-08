@@ -26,7 +26,7 @@
                             <th>What did I do today?</th>
                             <th>
                                 <p:selectOneMenu id="excerciseType" value="#{excerciseView.exercise}" style="width:150px">
-                                    <f:selectItem itemLabel="Select Exercise" itemValue="" noSelectionOption="true"/>
+                                    <f:selectItem itemLabel="Select Exercise" itemValue="#{excerciseView.exercise}" noSelectionOption="true"/>
                                     <f:selectItems value="#{excerciseView.exercises}"/>
                                 </p:selectOneMenu>
                             </th>
@@ -34,19 +34,23 @@
                         <tr>
                             <td>How long?</td>
                             <td>
-                                <p:inputNumber id="height" symbol=" min" minValue="50" maxValue="250"
+                                <p:inputNumber id="height" symbol=" min" minValue="1" maxValue="250"
                                                decimalPlaces="3" symbolPosition="s" emptyValue="always" value="#{excerciseView.currentExercise.time}"/>
                             </td>
                         </tr>
                     </table>
-                    <div class="submit"><p:commandButton action="#{excerciseView.addExercise(userView.currentUser)}" value="Submit" /></div>
+                    <div class="submit">
+                        <p:commandButton  action="#{excerciseView.addExercise(userView.currentUser)}" value="Add">
+                            <f:actionListener binding="#{caloriesView.addFromExcercise(excerciseView.currentExercise)}"/>
+                        </p:commandButton>
+                    </div>
             </div>
         </h:form>
         <div class="panel2">
             <table class="table2">
                 <tr>
                     <th>Calories burned: </th>
-                    <th><p:outputLabel id="Calories" value="0" style="padding: 5px; padding-right: 25px; padding-left: 25px; border: solid 1px #F4EEE0"/></th>
+                    <th><p:outputLabel id="Calories" value="#{caloriesView.currentCalories.caloriesFromExercise}" style="padding: 5px; padding-right: 25px; padding-left: 25px; border: solid 1px #F4EEE0"/></th>
                 </tr>
             </table>
 
