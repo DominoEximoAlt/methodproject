@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 
 @Controller
-@ViewScoped
+@ApplicationScope
 public class NavigationController {
 
     /**
