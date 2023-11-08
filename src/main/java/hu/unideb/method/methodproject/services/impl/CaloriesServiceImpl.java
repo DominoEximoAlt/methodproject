@@ -59,6 +59,7 @@ public class CaloriesServiceImpl implements CaloriesService {
     @Override
     public void calculateOverall(CaloriesDTO caloriesDTO) {
         caloriesDTO.setOverall(caloriesDTO.getCaloriesFromDiet() - caloriesDTO.getCaloriesFromExercise());
+
     }
 
 
