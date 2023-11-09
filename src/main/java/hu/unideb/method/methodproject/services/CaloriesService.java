@@ -8,7 +8,7 @@ public interface CaloriesService {
 
     List<CaloriesDTO> getAll();
     CaloriesDTO findCaloriesById(Long id);
-    CaloriesDTO findByUserName(String name);
+    List<CaloriesDTO> findByUserName(String name);
     void save(CaloriesDTO caloriesDTO);
     void delete(CaloriesDTO caloriesDTO);
 

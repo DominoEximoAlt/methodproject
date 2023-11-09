@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
 import javax.faces.bean.ViewScoped;
@@ -19,7 +20,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 @Controller
-@SessionScope
+@RequestScope
 public class ExcerciseView {
 
     Logger logger = Logger.getLogger(ExcerciseView.class.getName());

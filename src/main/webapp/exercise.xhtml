@@ -17,7 +17,7 @@
             <a class="active" href="exercise.jsf">Exercise</a>
             <a href="exercise.jsf">Diet</a>
             <p:commandButton value="Log out" action="#{userView.logout()}" oncomplete="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%">
-                <f:actionListener binding="#{caloriesView.saveCalories(userView.currentUser)}"/>
+
             </p:commandButton>
         </div>
         <h:form>
@@ -44,6 +44,7 @@
                     <div class="submit">
                         <p:commandButton  action="#{excerciseView.addExercise(userView.currentUser)}" value="Add">
                             <f:actionListener binding="#{caloriesView.addFromExcercise(excerciseView.currentExercise)}"/>
+                            <f:actionListener binding="#{caloriesView.saveCalories(userView.currentUser)}"/>
                         </p:commandButton>
                     </div>
             </div>
@@ -59,7 +60,11 @@
         </div>
         <div class="panel3">
             <h2>Statistics</h2>
-            <div class="linechart"> </div>
+            <div class="linechart">
+
+                <p:lineChart model="#{caloriesView.lineModel}" style="width: 100%; height: 230px;"/>
+
+            </div>
         </div>
 
     </div>

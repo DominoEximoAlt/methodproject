@@ -35,15 +35,13 @@ public class CaloriesServiceImpl implements CaloriesService {
     }
 
     @Override
-    public CaloriesDTO findByUserName(String name) {
+    public List<CaloriesDTO> findByUserName(String name) {
         User user = userRepository.findUserByUsername(name);
-        CaloriesDTO found = caloriesMapper.caloriesToCaloriesDto(caloriesRepository.findCaloriesByUser(user));
+        List<CaloriesDTO> found = caloriesMapper.caloriesListToCaloriesDtoList(caloriesRepository.findCaloriesByUser(user));
         if(found != null){
             return found;
         }
-        Calories calories = new Calories();
-        calories.setUser(user);
-        return caloriesMapper.caloriesToCaloriesDto(calories);
+        return  null;
     }
 
     @Override
