@@ -15,7 +15,7 @@
         <div class="navbar">
             <a href="myprofile.jsf">My profile</a>
             <a class="active" href="exercise.jsf">Exercise</a>
-            <a href="exercise.jsf">Diet</a>
+            <a href="diet.jsf">Diet</a>
             <p:commandButton value="Log out" action="#{userView.logout()}" oncomplete="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%">
 
             </p:commandButton>
@@ -62,7 +62,7 @@
             <h2>Statistics</h2>
             <div class="linechart">
 
-                <p:lineChart model="#{caloriesView.lineModel}" style="width: 100%; height: 230px;"/>
+                <p:lineChart model="#{caloriesView.lineModelForExercise}" style="width: 100%; height: 230px;"/>
 
             </div>
         </div>

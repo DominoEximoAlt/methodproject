@@ -16,29 +16,38 @@
             <a href="myprofile.jsf">My profile</a>
             <a href="exercise.jsf">Exercise</a>
             <a class="active" href="diet.jsf">Diet</a>
-            <p:commandButton value="Log out" styleClass="ui-button-flat" onsuccess="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%"/>
-        </div>
-        <div class="panel1">
-            <table class="table1">
-                <tr>
-                    <th>What did I eat today?</th>
-                    <th>
-                        <p:selectOneMenu id="country" value=" " style="width:150px">
-                            <f:selectItem itemLabel="Select food" itemValue="" noSelectionOption="true"/>
-                            <f:selectItems value=" "/>
-                        </p:selectOneMenu>
+            <p:commandButton value="Log out" action="#{userView.logout()}" oncomplete="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%">
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>How much?</td>
-                    <td>
-                        <p:inputNumber id="input" value=" " decimalPlaces="0" symbol=" g" symbolPosition="s"/>
-                    </td>
-                </tr>
-            </table>
-            <div class="submit"><p:button value="Submit" styleClass="ui-button-outlined" /></div>
+            </p:commandButton>
         </div>
+        <h:form>
+            <div class="panel1">
+                <table class="table1">
+                    <tr>
+                        <th>What did I eat today?</th>
+                        <th>
+                            <p:selectOneMenu id="country" value="#{foodView.food}" style="width:150px">
+                                <f:selectItem itemLabel="Select food" itemValue="#{foodView.food}" noSelectionOption="true"/>
+                                <f:selectItems value="#{foodView.foods}"/>
+                            </p:selectOneMenu>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>How much?</td>
+                        <td>
+                            <p:inputNumber id="input" value="#{foodView.currentFood.weight}" decimalPlaces="0" symbol=" g" symbolPosition="s"/>
+                        </td>
+                    </tr>
+                </table>
+                <div class="submit">
+                    <p:commandButton  action="#{foodView.addFood(userView.currentUser)}" value="Add">
+                        <f:actionListener binding="#{caloriesView.addFromFood(foodView.currentFood)}"/>
+                        <f:actionListener binding="#{caloriesView.saveCalories(userView.currentUser)}"/>
+                    </p:commandButton>
+                </div>
+            </div>
+        </h:form>
         <div class="panel2">
             <table class="table2">
                 <tr>
@@ -50,7 +59,11 @@
         </div>
         <div class="panel3">
             <h2>Statistics</h2>
-            <div class="linechart"> </div>
+            <div class="linechart">
+
+                <p:lineChart model="#{caloriesView.lineModelForDiet}" style="width: 100%; height: 230px;"/>
+
+            </div>
         </div>
 
     </div>

@@ -23,8 +23,6 @@ import java.util.logging.Logger;
 @RequestScope
 public class ExcerciseView {
 
-    Logger logger = Logger.getLogger(ExcerciseView.class.getName());
-
     @Autowired
     ExerciseService exerciseService;
 

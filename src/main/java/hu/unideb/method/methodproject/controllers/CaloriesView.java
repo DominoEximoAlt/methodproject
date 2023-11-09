@@ -2,34 +2,26 @@ package hu.unideb.method.methodproject.controllers;
 
 import hu.unideb.method.methodproject.dto.CaloriesDTO;
 import hu.unideb.method.methodproject.dto.ExerciseDto;
+import hu.unideb.method.methodproject.dto.FoodDTO;
 import hu.unideb.method.methodproject.dto.UserDto;
 import hu.unideb.method.methodproject.entities.User;
-import hu.unideb.method.methodproject.enums.ExerciseEnum;
 import hu.unideb.method.methodproject.mapper.UserMapper;
 import hu.unideb.method.methodproject.repositories.CaloriesRepository;
 import hu.unideb.method.methodproject.services.CaloriesService;
 import hu.unideb.method.methodproject.services.ExerciseService;
 import hu.unideb.method.methodproject.services.UserService;
 import jakarta.annotation.PostConstruct;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import org.primefaces.model.charts.ChartData;
 import org.primefaces.model.charts.line.LineChartDataSet;
 import org.primefaces.model.charts.line.LineChartModel;
 import org.primefaces.model.charts.line.LineChartOptions;
-import org.primefaces.model.charts.optionconfig.title.Title;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.context.annotation.ApplicationScope;
 import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
 
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -58,14 +50,18 @@ public class CaloriesView {
 
     List<CaloriesDTO> caloriesDTOList;
 
-    private LineChartModel lineModel;
+    private LineChartModel lineModelForExercise;
+
+    private LineChartModel lineModelForDiet;
 
     @PostConstruct
     public void init(){
         currentCalories = new CaloriesDTO();
         caloriesDTOList = new ArrayList<>();
-        lineModel = new LineChartModel();
-        createLineModel(userView);
+        lineModelForExercise = new LineChartModel();
+        lineModelForDiet = new LineChartModel();
+        createLineModelForExercise(userView);
+        createLineChartModelForDiet(userView);
     }
 
     public void addFromExcercise(ExerciseDto exerciseDto){
@@ -99,6 +95,43 @@ public class CaloriesView {
         currentCalories.setCaloriesFromExercise(currentCalories.getCaloriesFromExercise() + (exerciseDto.getTime().intValue() * caloricValue));
     }
 
+    public void addFromFood(FoodDTO foodDTO){
+        int caloricValue = 0;
+
+        switch (foodDTO.getFoodEnum()){
+            case BEEF :
+                caloricValue = 2;
+                break;
+            case CHICKEN:
+                caloricValue = 1;
+                break;
+            case PORK:
+                caloricValue = 3;
+                break;
+            case VEGETABLES:
+                caloricValue = 2;
+                break;
+            case FRUITS:
+                caloricValue = 2;
+                break;
+            case GYRO:
+                caloricValue = 12;
+                break;
+            case TACO:
+                caloricValue = 10;
+                break;
+            case RICE:
+                caloricValue = 4;
+                break;
+            case POTATOES:
+                caloricValue = 5;
+                break;
+
+        }
+
+        currentCalories.setCaloriesFromDiet(currentCalories.getCaloriesFromExercise() + (foodDTO.getWeight().intValue() * caloricValue));
+    }
+
     public CaloriesDTO getCurrentCalories() {
         return currentCalories;
     }
@@ -115,12 +148,20 @@ public class CaloriesView {
         this.caloriesDTOList = caloriesDTOList;
     }
 
-    public LineChartModel getLineModel() {
-        return lineModel;
+    public LineChartModel getLineModelForExercise() {
+        return lineModelForExercise;
     }
 
-    public void setLineModel(LineChartModel lineModel) {
-        this.lineModel = lineModel;
+    public void setLineModelForExercise(LineChartModel lineModelForExercise) {
+        this.lineModelForExercise = lineModelForExercise;
+    }
+
+    public LineChartModel getLineModelForDiet() {
+        return lineModelForDiet;
+    }
+
+    public void setLineModelForDiet(LineChartModel lineModelForDiet) {
+        this.lineModelForDiet = lineModelForDiet;
     }
 
     public void saveCalories(UserDto userDto){
@@ -132,13 +173,15 @@ public class CaloriesView {
     }
 
 
-    public void createLineModel(UserView userView) {
+    public void createLineModelForExercise(UserView userView) {
         ChartData data = new ChartData();
 
         LineChartDataSet dataSet = new LineChartDataSet();
         List<Integer> caloriesBurned = new ArrayList<>();
         for(CaloriesDTO calories : caloriesService.findByUserName(userView.getCurrentUser().getUsername())){
-            caloriesBurned.add(calories.getCaloriesFromExercise());
+            if(calories.getCaloriesFromExercise() > 0){
+                caloriesBurned.add(calories.getCaloriesFromExercise());
+            }
         }
         List<Object> values = new ArrayList<>();
 
@@ -153,7 +196,9 @@ public class CaloriesView {
 
         List<String> labels = new ArrayList<>();
         for( CaloriesDTO dataElement : caloriesService.findByUserName(userView.getCurrentUser().getUsername())){
-            labels.add(dataElement.getLogDate().toString());
+            if (dataElement.getCaloriesFromExercise() > 0){
+                labels.add(dataElement.getLogDate().toString());
+            }
         }
         data.setLabels(labels);
 
@@ -162,8 +207,47 @@ public class CaloriesView {
         options.setMaintainAspectRatio(false);
 
 
-        lineModel.setOptions(options);
-        lineModel.setData(data);
+        lineModelForExercise.setOptions(options);
+        lineModelForExercise.setData(data);
+    }
+
+    public void createLineChartModelForDiet(UserView userView) {
+        ChartData data = new ChartData();
+
+        LineChartDataSet dataSet = new LineChartDataSet();
+        List<Integer> caloriesConsumed = new ArrayList<>();
+        for(CaloriesDTO calories : caloriesService.findByUserName(userView.getCurrentUser().getUsername())){
+            if(calories.getCaloriesFromDiet() > 0){
+                caloriesConsumed.add(calories.getCaloriesFromDiet());
+            }
+        }
+        List<Object> values = new ArrayList<>();
+
+        values.addAll(caloriesConsumed);
+
+        dataSet.setData(values);
+        dataSet.setFill(false);
+        dataSet.setLabel("Calories Consumed");
+        dataSet.setBorderColor("rgb(75, 192, 192)");
+        dataSet.setTension(0.1);
+        data.addChartDataSet(dataSet);
+
+        List<String> labels = new ArrayList<>();
+        for( CaloriesDTO dataElement : caloriesService.findByUserName(userView.getCurrentUser().getUsername())){
+            if (dataElement.getCaloriesFromDiet() > 0){
+                labels.add(dataElement.getLogDate().toString());
+            }
+
+        }
+        data.setLabels(labels);
+
+        //Options
+        LineChartOptions options = new LineChartOptions();
+        options.setMaintainAspectRatio(false);
+
+
+        lineModelForDiet.setOptions(options);
+        lineModelForDiet.setData(data);
     }
 
 }
