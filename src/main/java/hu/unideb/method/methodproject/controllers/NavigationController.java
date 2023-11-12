@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 
 @Controller
-@ViewScoped
+@ApplicationScope
 public class NavigationController {
 
     /**
@@ -16,15 +16,16 @@ public class NavigationController {
      *
      * @return string link and window location
      */
-    public String moveToProfilePage(boolean loginStatus) {
-        if(Boolean.TRUE.equals(loginStatus)){
+    public String moveToProfilePage(UserView userView) {
+        if(Boolean.TRUE.equals(userView.isLoggedIn())){
             return "window.location.href = '/fitness/myprofile.jsf'";
         }
         return null;
 
     }
     public String moveToLoginPage() {
-        return "window.location.href = '/fitness/login.jsf'";
+            return "window.location.href = '/fitness/login.jsf'";
+
 
     }
 

@@ -78,3 +78,7 @@ td, th{
     margin: 5%;
     height: 50%;
 }
+
+.ui-chart {
+    margin-bottom: 50px;
+}

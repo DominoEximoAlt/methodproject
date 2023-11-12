@@ -9,18 +9,19 @@ import hu.unideb.method.methodproject.mapper.UserMapper;
 import hu.unideb.method.methodproject.services.ExerciseService;
 import hu.unideb.method.methodproject.services.UserService;
 import jakarta.annotation.PostConstruct;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 import javax.faces.bean.ViewScoped;
 import java.util.*;
 import java.util.logging.Logger;
 
 @Controller
-@ViewScoped
+@RequestScope
 public class ExcerciseView {
-
-    Logger logger = Logger.getLogger(ExcerciseView.class.getName());
 
     @Autowired
     ExerciseService exerciseService;
@@ -71,6 +72,10 @@ public class ExcerciseView {
     }
 
     public ExerciseDto getCurrentExercise() {
+        if(exercise != null){
+            currentExercise.setExercise(Enum.valueOf(ExerciseEnum.class,exercise));
+        }
+
         return currentExercise;
     }
 
@@ -87,7 +92,7 @@ public class ExcerciseView {
     }
 
 
-    public void addExercise(UserDto userDto){
+    public void addExercise(@NotNull UserDto userDto){
         User user = userMapper.userDtoToUser(userService.findUserByUserName(userDto.getUsername()));
         currentExercise.setUser(user);
         currentExercise.setExercise(Enum.valueOf(ExerciseEnum.class,exercise));

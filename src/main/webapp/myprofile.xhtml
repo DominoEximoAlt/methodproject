@@ -16,7 +16,9 @@
             <a class="active" href="myprofile.jsf">My profile</a>
             <a href="exercise.jsf">Exercise</a>
             <a href="diet.jsf">Diet</a>
-            <p:commandButton value="Log out" styleClass="ui-button-flat" onsuccess="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%"/>
+            <p:commandButton value="Log out" action="#{userView.logout()}" oncomplete="#{navigationController.moveToLoginPage()}" style="margin-top: 5px; margin-left: 30%">
+
+            </p:commandButton>
         </div>
         <h:form>
             <div>

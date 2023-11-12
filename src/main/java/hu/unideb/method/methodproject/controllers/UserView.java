@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@ViewScoped
+@ApplicationScope
 public class UserView {
 
     @Autowired
@@ -63,14 +63,17 @@ public class UserView {
      * Registers the user into the database if not already stored
      * @param userDto the user to be registered
      */
-    public void registerUser(UserDto userDto){
+    public void registerUser(UserDto userDto) {
         if(userService.findUserByUserName(userDto.getUsername()) != null){
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "FAILURE", "User with name already exists!");
             PrimeFaces.current().dialog().showMessageDynamic(message);
         }else{
+            setLoggedIn(true);
             userService.save(userDto);
             FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "SUCCES", "Succesfully registered!");
             PrimeFaces.current().dialog().showMessageDynamic(message);
+
+
         }
     }
 
