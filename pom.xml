@@ -17,6 +17,7 @@
 		<java.version>19</java.version>
 		<joinfaces.version>5.2.0-m3</joinfaces.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+		<spring-security.version>6.1.5</spring-security.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -111,12 +112,18 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 
 
 	</dependencies>
 
 	<build>
 		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
