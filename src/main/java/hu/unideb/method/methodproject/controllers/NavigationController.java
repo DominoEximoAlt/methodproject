@@ -23,6 +23,11 @@ public class NavigationController {
         return null;
 
     }
+
+    /**
+     * Returns a string of the login page for navigation
+     * @return string link of login page
+     */
     public String moveToLoginPage() {
             return "window.location.href = '/fitness/login.jsf'";
 

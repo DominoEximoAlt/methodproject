@@ -91,7 +91,10 @@ public class ExcerciseView {
         this.exerciseDtoList = exerciseDtoList;
     }
 
-
+    /**
+     * saves the current Exercise to the curent user through database
+     * @param userDto
+     */
     public void addExercise(@NotNull UserDto userDto){
         User user = userMapper.userDtoToUser(userService.findUserByUserName(userDto.getUsername()));
         currentExercise.setUser(user);

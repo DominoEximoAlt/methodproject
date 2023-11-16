@@ -59,6 +59,9 @@ public class UserView {
         }
     }
 
+    /**
+     * Logs the user out by setting the current user to null
+     */
     public void logout(){
         setCurrentUser(null);
     }

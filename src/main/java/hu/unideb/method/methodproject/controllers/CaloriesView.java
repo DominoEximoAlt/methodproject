@@ -64,6 +64,10 @@ public class CaloriesView {
         createLineChartModelForDiet(userView);
     }
 
+    /**
+     * Adds caloric value to the currentCalories from exercise
+     * @param exerciseDto the current user's latest exercise
+     */
     public void addFromExcercise(ExerciseDto exerciseDto){
         int caloricValue = 0;
 
@@ -94,6 +98,11 @@ public class CaloriesView {
 
         currentCalories.setCaloriesFromExercise(currentCalories.getCaloriesFromExercise() + (exerciseDto.getTime().intValue() * caloricValue));
     }
+
+    /**
+     * Adds caloric value to the currentCalories from diet
+     * @param foodDTO the current user's latest diet
+     */
 
     public void addFromFood(FoodDTO foodDTO){
         int caloricValue = 0;
@@ -164,6 +173,10 @@ public class CaloriesView {
         this.lineModelForDiet = lineModelForDiet;
     }
 
+    /**
+     * saves the currentCAlories into the database
+     * @param userDto the current User
+     */
     public void saveCalories(UserDto userDto){
         User user = userMapper.userDtoToUser(userService.findUserByUserName(userDto.getUsername()));
         currentCalories.setUser(user);
@@ -173,6 +186,10 @@ public class CaloriesView {
     }
 
 
+    /**
+     * Creates the linechart model for the exercise page
+     * @param userView
+     */
     public void createLineModelForExercise(UserView userView) {
         ChartData data = new ChartData();
 
@@ -210,6 +227,11 @@ public class CaloriesView {
         lineModelForExercise.setOptions(options);
         lineModelForExercise.setData(data);
     }
+
+    /**
+     * Creates the linechart model for the diet page
+     * @param userView
+     */
 
     public void createLineChartModelForDiet(UserView userView) {
         ChartData data = new ChartData();

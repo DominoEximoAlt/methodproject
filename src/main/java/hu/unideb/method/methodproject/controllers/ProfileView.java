@@ -27,11 +27,22 @@ public class ProfileView {
 
     private ProfileDto currentProfile;
 
+
+    /**
+     * loads the current users profile into the myProfile page
+     * @param currentUser the currently logged-in user
+     */
     public void loadProfile(UserDto currentUser){
         if (currentUser != null){
             setCurrentProfile(profileService.findByUserId(currentUser.getUsername()));
         }
     }
+
+
+    /**
+     * saves the profile to the database
+     * @param userDto current user
+     */
 
     public void saveProfile(UserDto userDto){
         User user = userMapper.userDtoToUser(userService.findUserByUserName(userDto.getUsername()));

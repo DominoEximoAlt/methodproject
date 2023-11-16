@@ -95,6 +95,10 @@ public class FoodView {
         this.foodDTOList = foodDTOList;
     }
 
+    /**
+     * saves the current Diet to the curent user through database
+     * @param userDto
+     */
     public void addFood(@NotNull UserDto userDto){
         User user = userMapper.userDtoToUser(userService.findUserByUserName(userDto.getUsername()));
         currentFood.setUser(user);
