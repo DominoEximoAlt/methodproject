@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -26,8 +27,8 @@ class UserViewTest {
     @Mock
     NavigationController navigationController;
 
-
-
+    @Mock
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @InjectMocks
     private UserView underTest;
@@ -57,9 +58,10 @@ class UserViewTest {
 
         UserDto user = new UserDto();
         user.setUsername("David");
-        user.setPassword("123");
+        user.setPassword(bCryptPasswordEncoder.encode("123"));
 
         given(userService.findUserByUserName(user.getUsername())).willReturn(user);
+        given(bCryptPasswordEncoder.matches(user.getPassword(),underTest.getCurrentUser().getPassword())).willReturn(true);
 
         underTest.loginUser(user);
 

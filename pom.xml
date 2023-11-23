@@ -15,7 +15,7 @@
 	<description>methodproject</description>
 	<properties>
 		<java.version>19</java.version>
-		<joinfaces.version>5.2.0-m3</joinfaces.version>
+		<joinfaces.version>5.1.5</joinfaces.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 		<spring-security.version>6.1.5</spring-security.version>
 	</properties>
@@ -49,7 +49,7 @@
 		<dependency>
 			<groupId>org.joinfaces</groupId>
 			<artifactId>primefaces-spring-boot-starter</artifactId>
-			<version>5.2.0-m3</version>
+			<version>5.1.5</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.joinfaces</groupId>
@@ -60,7 +60,7 @@
 		<dependency>
 			<groupId>org.joinfaces</groupId>
 			<artifactId>myfaces-spring-boot-starter</artifactId>
-			<version>5.2.0-m3</version>
+			<version>5.1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.joinfaces</groupId>
